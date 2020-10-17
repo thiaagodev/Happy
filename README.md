@@ -1,11 +1,13 @@
 <h1 align="center">
-    <img alt="Happy" title="Happy" src="./.github/logo.svg" />
+    Happy
 </h1>
 
 ### Desenvolvido na Next Level Week 3 da Rocketseat
 
 
 O Happy é uma aplicação que conecta pessoas à casas de acolhimento institucional para fazer o dia de muitas crianças mais feliz 💜
+
+<br/>
 
 <p align="center">
   <img alt="Happy" src="./.github/happy.png" width="100%">
