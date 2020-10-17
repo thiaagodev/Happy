@@ -16,6 +16,7 @@ interface OrphanageDataRouteParams {
 export default function OrphanageData() {
   const [name, setName] = useState('');
   const [about, setAbout] = useState('');
+  const [whatsapp_number, setWhatsappNumber] = useState('');
   const [instructions, setInstructions] = useState('');
   const [opening_hours, setOpeningHours] = useState('');
   const [open_on_weekends, setOpenOnWeekends] = useState(true);
@@ -27,15 +28,6 @@ export default function OrphanageData() {
 
   async function handleCreateOrphanage() {
     const {latitude, longitude  } = params.position;
-    console.log({
-      name,
-      about,
-      instructions,
-      opening_hours,
-      open_on_weekends,
-      latitude,
-      longitude,
-    });
 
     const data = new FormData();
 
@@ -43,6 +35,7 @@ export default function OrphanageData() {
     data.append('latitude', String(latitude));
     data.append('longitude', String(longitude));
     data.append('about', about);
+    data.append('whatsapp_number', whatsapp_number);
     data.append('instructions', instructions);
     data.append('opening_hours', opening_hours);
     data.append('open_on_weekends', String(open_on_weekends));
@@ -102,10 +95,12 @@ export default function OrphanageData() {
         onChangeText={text => setAbout(text)}
       />
 
-      {/* <Text style={styles.label}>Whatsapp</Text>
-      <TextInput
-        style={styles.input}
-      /> */}
+      <Text style={styles.label}>Número do Whatsapp</Text>
+        <TextInput
+          style={styles.input}
+          value={whatsapp_number}
+          onChangeText={text => setWhatsappNumber(text)}
+      />
 
       <Text style={styles.label}>Fotos</Text>
 
