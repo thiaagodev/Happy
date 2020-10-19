@@ -3,6 +3,7 @@ import multer from 'multer';
 
 import uploadConfig from './config/upload';
 import OrphanagesController from './controllers/OrphanagesController';
+import SessionController from './controllers/SessionController';
 import UsersController from './controllers/UsersController';
 
 const routes = Router();
@@ -19,5 +20,10 @@ routes.get('/orphanages/:id', OrphanagesController.show);
 routes.post('/orphanages', upload.array('images'),OrphanagesController.create);
 
 routes.post('/register/user', UsersController.create);
+routes.post('/session', SessionController.store);
+
+
+routes.get('/authenticated', (req, res) => res.send());
+
 
 export default routes;
