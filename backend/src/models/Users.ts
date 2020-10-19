@@ -15,18 +15,14 @@ export default class {
     @Column()
     password: string;
 
-    async generatePasswordHash() {
+    @BeforeInsert()
+    async beforeInsert() {
         this.password = await bcrypt.hash(this.password, 8);
     }
 
-    @BeforeInsert()
-    beforeInsert() {
-        this.generatePasswordHash();
-    }
-
     @BeforeUpdate()
-    beforeUpdate() {
-        this.generatePasswordHash();
+    async beforeUpdate() {
+        this.password = await bcrypt.hash(this.password, 8);
     }
    
 }

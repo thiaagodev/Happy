@@ -4,6 +4,7 @@ import Users from '../models/Users';
 import * as Yup from 'yup';
 
 export default {
+    
     async create(req: Request, res:Response) {
         const {
             name,
