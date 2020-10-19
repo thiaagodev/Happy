@@ -5,6 +5,7 @@ import uploadConfig from './config/upload';
 import OrphanagesController from './controllers/OrphanagesController';
 import SessionController from './controllers/SessionController';
 import UsersController from './controllers/UsersController';
+import TestController from './controllers/TestController';
 
 import authMiddleware from './middlewares/auth';
 
@@ -26,7 +27,7 @@ routes.post('/session', SessionController.store);
 
 routes.use(authMiddleware);
 
-routes.get('/authenticated', (_, res: Response) => res.send());
+routes.get('/authenticated',TestController.test);
 
 
 export default routes;
