@@ -28,6 +28,7 @@ routes.post('/session', SessionController.store);
 routes.use(authMiddleware);
 
 routes.get('/authenticated',TestController.test);
+routes.put('/approveOrphanage/:id',UsersController.approveOrphanage);
 
 
 export default routes;

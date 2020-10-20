@@ -1,10 +1,10 @@
-import { Request, Response } from 'express';
-import { getRepository } from 'typeorm'
+import { query, Request, Response } from 'express';
+import { getConnection, getRepository } from 'typeorm'
 import Users from '../models/Users';
+import Orphanage from '../models/Orphanage';
 import * as Yup from 'yup';
 
 export default {
-    
     async create(req: Request, res:Response) {
         const {
             name,
@@ -35,5 +35,19 @@ export default {
         await UsersRepository.save(user);
 
         return res.status(201).json(user);
+    },
+
+    async approveOrphanage(req: Request, res: Response) {
+        const { id } = req.params;
+        const OrphanageRepository = getRepository(Orphanage);
+
+        await getConnection()
+                .createQueryBuilder()
+                .update(Orphanage)
+                .set({ is_approved: true })
+                .where("id = :id", { id })
+            .execute();            
+
+        res.status(200).send();
     }
 }
