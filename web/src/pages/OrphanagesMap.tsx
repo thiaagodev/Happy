@@ -22,7 +22,9 @@ function OrphanagesMap() {
         api.get('/orphanages').then(response => {
             setOrphanages(response.data);
         })
-    }, []);
+    }, []); 
+
+    console.log(orphanages);
 
     return (
         <div id="page-map">
@@ -48,16 +50,16 @@ function OrphanagesMap() {
                 {/*<TileLayer url="https://a.tile.openstreetmap.org/{z}/{x}/{y}.png" />*/}
                 <TileLayer url={`https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`} />
 
-                {orphanages.map(orphanage => {
+                { orphanages[0] !== null && orphanages.map(orphanage => {
                     return (
                         <Marker
                             icon={mapIcon}
-                            position={[orphanage.latitude, orphanage.longitude]}
-                            key={orphanage.id}
+                            position={[orphanage?.latitude, orphanage?.longitude]}
+                            key={orphanage?.id}
                         >
                             <Popup closeButton={false} minWidth={240} maxWidth={240} className="map-popup">
-                            {orphanage.name}
-                        <Link to={`/orphanages/${orphanage.id}`}>
+                            {orphanage?.name}
+                        <Link to={`/orphanages/${orphanage?.id}`}>
                                     <FiArrowRight size={20} color="#FFF" />
                                 </Link>
                             </Popup>

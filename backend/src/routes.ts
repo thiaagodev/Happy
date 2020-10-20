@@ -11,7 +11,6 @@ import authMiddleware from './middlewares/auth';
 
 const routes = Router();
 const upload = multer(uploadConfig);
-
 // MVC
 
 // Model 
@@ -21,6 +20,7 @@ const upload = multer(uploadConfig);
 routes.get('/orphanages', OrphanagesController.index);
 routes.get('/orphanages/:id', OrphanagesController.show);
 routes.post('/orphanages', upload.array('images'),OrphanagesController.create);
+
 
 routes.post('/register/user', UsersController.create);
 routes.post('/session', SessionController.store);
