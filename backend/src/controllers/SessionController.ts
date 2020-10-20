@@ -26,7 +26,7 @@ export default {
 
         return res.json({
             token: jwt.sign({ userId: user.id }, process.env.APP_SECRET, {
-                expiresIn: '7d'
+                expiresIn: '1d'
             })
         });
         
