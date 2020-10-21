@@ -65,7 +65,7 @@ export default {
             open_on_weekends,
             is_approved
         } = req.body;
-        
+
         const requestImages = req.files as Express.Multer.File[];
         const images = requestImages.map( image => {
             return { path: image.filename }
@@ -134,11 +134,21 @@ export default {
                      })
                     .where("id = :idImage", { idImage })
                 .execute();
+                //Excluindo as imagens que estão no banco mas não estão na request de edição
+                // Deixando apenas as imagens que foram enviadas para edição no banco de dados 
+                let path = images[index].path;
+                await getConnection()
+                    .createQueryBuilder()
+                    .delete()
+                    .from(Image)
+                    .where("path != :path", { path })
+                .execute();
             } 
             updateImages();
         }
 
         res.status(200).send();
     }
+
     
 }
