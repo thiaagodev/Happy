@@ -29,6 +29,7 @@ routes.use(authMiddleware);
 
 routes.get('/authenticated',TestController.test);
 routes.put('/approveOrphanage/:id',UsersController.approveOrphanage);
+routes.put('/editOrphanage/:id', upload.array('images'), UsersController.editOrphanage);
 
 
 export default routes;
