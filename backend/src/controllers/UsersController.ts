@@ -1,9 +1,11 @@
 import { Request, Response } from 'express';
-import { getConnection, getManager, getRepository } from 'typeorm'
+import { getConnection, getRepository } from 'typeorm'
 import Users from '../models/Users';
+import * as Yup from 'yup';
+
+import pendingOrphanagesView from '../views/pending_orphanages_view';
 import Orphanage from '../models/Orphanage';
 import Image from '../models/Image';
-import * as Yup from 'yup';
 
 export default {
     async create(req: Request, res:Response) {
@@ -49,6 +51,16 @@ export default {
             .execute();            
 
         res.status(200).send();
+    },
+
+    async showPendingOrphanages(req: Request, res:Response){
+        const orphanagesRepository = getRepository(Orphanage);
+
+        const orphanages = await orphanagesRepository.find({
+            relations: ['images']
+        });
+
+        return res.json(pendingOrphanagesView.renderMany(orphanages));
     },
 
     async editOrphanage(req: Request, res: Response) {
