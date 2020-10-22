@@ -28,8 +28,9 @@ routes.post('/session', SessionController.store);
 routes.use(authMiddleware);
 
 routes.get('/authenticated',TestController.test);
-routes.put('/approveOrphanage/:id',UsersController.approveOrphanage);
-routes.put('/editOrphanage/:id', upload.array('images'), UsersController.editOrphanage);
+routes.put('/approve/orphanage/:id',UsersController.approveOrphanage);
+routes.put('/edit/orphanage/:id', upload.array('images'), UsersController.editOrphanage);
+routes.delete('/remove/orphanage/:id', UsersController.removeOrphanage);
 
 
 export default routes;

@@ -147,8 +147,16 @@ export default {
             updateImages();
         }
 
-        res.status(200).send();
-    }
+        res.status(204).json({message: 'Orphanage has been updated'});
+    },
+    
+    async removeOrphanage(req: Request, res: Response) {
+        const { id } = req.params;
 
+        const OrphanageRepository = getRepository(Orphanage);
+        await OrphanageRepository.delete(id);
+
+        res.status(204).json({message: 'Orphanage has been deleted'});
+    }
     
 }
