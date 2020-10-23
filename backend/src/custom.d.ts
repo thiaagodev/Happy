@@ -9,3 +9,6 @@ declare namespace NodeJS {
       APP_SECRET: string = happy_jwt_flux;    
    }
 }
+
+declare module 'nodemailer-express-handlebars'; 
+
