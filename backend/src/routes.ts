@@ -5,7 +5,6 @@ import uploadConfig from './config/upload';
 import OrphanagesController from './controllers/OrphanagesController';
 import SessionController from './controllers/SessionController';
 import UsersController from './controllers/UsersController';
-import TestController from './controllers/TestController';
 
 import authMiddleware from './middlewares/auth';
 

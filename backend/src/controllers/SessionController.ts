@@ -3,6 +3,7 @@ import { getRepository } from 'typeorm';
 import * as dotenv from 'dotenv';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import crypto from 'crypto';
 
 import Users from '../models/Users';
 
@@ -29,6 +30,25 @@ export default {
                 expiresIn: '1d'
             })
         });
+        
+    },
+
+    async forgotPassword(req: Request, res: Response) {
+        const { email } = req.body;
+
+        const UserRepository = getRepository(Users);
+
+        const user = await UserRepository.findOne({ email });
+
+        if(!user){
+            return res.status(404).json({message: 'User not found'});
+        }   
+        
+        const token = crypto.randomBytes(20).toString('hex');
+
+        const now = new Date();
+        now.setHours(now.getHours() + 1);
+
         
     }
 }

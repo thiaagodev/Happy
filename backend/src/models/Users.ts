@@ -15,6 +15,12 @@ export default class {
     @Column()
     password: string;
 
+    @Column()
+    password_reset_token: string;
+
+    @Column();
+    password_reset_expires: string;
+
     @BeforeInsert()
     async beforeInsert() {
         this.password = await bcrypt.hash(this.password, 8);
