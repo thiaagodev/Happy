@@ -18,8 +18,8 @@ export default class {
     @Column()
     password_reset_token: string;
 
-    @Column();
-    password_reset_expires: string;
+    @Column()
+    password_reset_expires: Date;
 
     @BeforeInsert()
     async beforeInsert() {

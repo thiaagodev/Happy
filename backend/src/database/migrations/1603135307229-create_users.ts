@@ -29,11 +29,13 @@ export class createUsers1603135307229 implements MigrationInterface {
         },
         {
           name: 'password_reset_token',
-          type: 'varchar'
+          type: 'varchar',
+          isNullable: true
         },
         {
           name: 'password_reset_expires',
-          type: 'date'
+          type: 'date',
+          isNullable: true
         }
       ]
     }))

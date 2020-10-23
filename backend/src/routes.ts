@@ -23,6 +23,8 @@ routes.post('/orphanages', upload.array('images'),OrphanagesController.create);
 
 routes.post('/register/user', UsersController.create);
 routes.post('/session', SessionController.store);
+routes.post('/forgot-password', SessionController.forgotPassword);
+routes.post('/reset-password', SessionController.resetPassword);
 
 // A partir daqui somente rotas autenticadas
 routes.use(authMiddleware);
