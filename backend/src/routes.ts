@@ -28,9 +28,9 @@ routes.post('/session', SessionController.store);
 // A partir daqui somente rotas autenticadas
 routes.use(authMiddleware);
 
-routes.get('/authenticated',TestController.test);
 routes.put('/approve/orphanage/:id',UsersController.approveOrphanage);
-routes.get('/pendingOrphanages/', UsersController.showPendingOrphanages);
+routes.get('/pending-orphanages/', UsersController.showPendingOrphanages);
+routes.get('/pending-orphanages-details/:id', UsersController.showOrphanageDetails);
 routes.put('/edit/orphanage/:id', upload.array('images'), UsersController.editOrphanage);
 routes.delete('/remove/orphanage/:id', UsersController.removeOrphanage);
 

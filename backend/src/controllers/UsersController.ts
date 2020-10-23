@@ -63,6 +63,18 @@ export default {
         return res.json(pendingOrphanagesView.renderMany(orphanages));
     },
 
+    async showOrphanageDetails(req: Request, res: Response) {
+        const { id } = req.params;
+
+        const orphanagesRepository = getRepository(Orphanage);
+
+        const orphanage = await orphanagesRepository.findOneOrFail(id, {
+            relations: ['images']
+        });
+
+        return res.json(pendingOrphanagesView.render(orphanage));
+    },
+
     async editOrphanage(req: Request, res: Response) {
         const { id } = req.params; 
          
