@@ -25,6 +25,31 @@
     background: url('../../images/landing.svg') no-repeat  80% center;
 } 
 
+#page-landing .content-wrapper .restricted-access {
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    width: 222px;
+    height: 56px;
+    background: #12D4E0;
+    color: white;
+    text-decoration: none;
+    font-weight: 800;
+    border-radius: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: background-color 0.2s;
+}
+
+#page-landing .content-wrapper .restricted-access:hover {
+    background: #96FEFF;
+    color: #15C3D6;
+}
+
 #page-landing .content-wrapper main h1 {
     position: absolute;
     top: 28.83%;
@@ -46,7 +71,7 @@
 
 .content-wrapper .location {
     position: absolute;
-    right: 0;
+    left: 18rem;
     top: 0;
     font-size: 24px;
     line-height: 34px;

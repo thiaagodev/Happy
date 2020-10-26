@@ -1,0 +1,163 @@
+#login-page {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+  
+#login-page #left-side {
+    display: flex;
+    flex: 1;
+    width: 70vw;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    background-color: #29B6D1;
+}
+
+#login-page .location {
+    position: absolute;
+    left: auto;
+    bottom: 8rem;
+    font-size: 24px;
+    line-height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    flex-direction: column;
+}
+
+#login-page #login-area {
+    background-color: #D3E2E5;
+    display: flex;
+    height: 100vh;
+    width: 30vw;
+    position: absolute;
+    right: 0;
+    align-items: center;
+    justify-content: center;
+}
+
+#login-page #login-area h1{
+    position: absolute;
+    top: 8rem;
+    left: 5rem;
+    color: #5C8599;
+}
+
+#login-page #login-area .back {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+
+    width: 48px;
+    height: 48px;
+    background: #EBF2F5;
+    border-radius: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: background-color 0.2s;
+}
+
+form.login-form {
+    width: 100vw;
+
+    border: 1px solid #D3E2E5;
+    border-radius: 20px;
+
+    padding: 64px 80px;
+
+    overflow: hidden;
+}
+
+form.login-form fieldset {
+    border: 0;
+}
+
+form.login-form fieldset {
+    border: 0;
+}
+  
+form.login-form fieldset + fieldset {
+    margin-top: 80px;
+}
+  
+form.login-form .input-block + .input-block {
+    margin-top: 24px;
+}
+  
+form.login-form .input-block label {
+    display: flex;
+    color: #8FA7B3;
+    margin-bottom: 8px;
+    line-height: 24px;
+}
+
+form.login-form .input-block-bottom {
+    display: flex;
+    flex-direction: row;
+    margin-top: 15px;
+    border: none;
+    font-size: 16px;
+}
+
+form.login-form .input-block-bottom label {
+    color: #8FA7B3;
+    margin-left: 30px;
+    line-height: 24px;
+}
+
+form.login-form .input-block-bottom #checkbox {
+    width: 24px;
+    height: 24px;
+    border-radius: 8px;
+    position: absolute;
+    margin-top: 0px;
+    background: #37C77F;
+}
+
+form.login-form .input-block-bottom #checkbox:checked {
+    background: #37C77F;
+}
+
+form.login-form .input-block-bottom #forgot {
+    color: #8FA7B3;
+    margin-left: 6rem;
+    line-height: 24px;
+}
+
+form.login-form .input-block input {
+  width: 100%;
+  background: #F5F8FA;
+  border: 1px solid #D3E2E5;
+  border-radius: 20px;
+  outline: none;
+  color: #5C8599;
+}
+
+form.login-form .input-block input {
+  height: 64px;
+  padding: 0 16px;
+}
+
+form.login-form button.login-button {
+    margin-top: 64px;
+  
+    width: 100%;
+    height: 64px;
+    border: 0;
+    cursor: pointer;
+    background: #3CDC8C;
+    border-radius: 20px;
+    color: #FFFFFF;
+    font-weight: 800;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    transition: background-color 0.2s;
+  }

@@ -22,6 +22,11 @@ function Landing() {
                     <strong>Tietê</strong>
                     <span>São Paulo</span>
                 </div>
+
+                <Link to="/login" className="restricted-access">
+                    Acesso Restrito
+                </Link>
+                
                 <Link to="/app" className="enter-app">
                     <FiArrowRight size={26} color="rgba(0, 0, 0, 0.6)" />
                 </Link>
