@@ -20,3 +20,6 @@ O Happy é uma aplicação que conecta pessoas à casas de acolhimento instituci
 - [React Native](https://facebook.github.io/react-native/)
 - [Expo](https://expo.io/)
 - [TypeScript](https://www.typescriptlang.org/)
+
+
+Feito com :hearts: by Rocketseat :wave: [Acesse o repositório oficial](https://github.com/rocketseat-education/nlw-03-omnistack)
