@@ -1,11 +1,11 @@
 import React from 'react';
 
-import '../../styles/pages/login.css';
+import '../../styles/pages/forgot-password.css';
 import Logo from '../../images/Logotipo.svg'
 import { Link } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
 
-export default function Login() {
+export default function ForgotPassword() {
     return (
         <div id="login-page">
             <div id="left-side">
@@ -16,7 +16,9 @@ export default function Login() {
                 </div>
             </div>
             <div id="login-area">
-               <h1>Fazer login</h1>
+               <h1>Esqueci a senha</h1>
+               <p>Sua redefinição de senha será enviada
+                para o e-mail cadastrado.</p>
                <form onSubmit={() => {}} className="login-form">
                     <fieldset>
                         <div className="input-block">
@@ -28,28 +30,13 @@ export default function Login() {
                                 onChange={() => {}} 
                             />
                         </div>
-                        <div className="input-block">
-                            <label htmlFor="senha">Senha</label>
-                            <input
-                                type="password" 
-                                id="" 
-                               /*  value=""  */
-                                onChange={() => {}} 
-                            />
-                        </div>
-                        <div className="input-block-bottom">
-                            <input type="checkbox" id="checkbox"/>
-                            <label htmlFor="checkbox">Lembrar-me</label>  
-
-                            <Link id="forgot" to="/forgot-password">Esqueci minha senha</Link>
-                        </div>
                     </fieldset>
                     <button type="button" className="login-button">
-                        Entrar
+                        Enviar
                     </button>
                </form>
 
-               <Link to="/" className="back">
+               <Link to="/login" className="back">
                     <FiArrowLeft size={26} color="#15C3D6" />
                </Link>
             </div>
