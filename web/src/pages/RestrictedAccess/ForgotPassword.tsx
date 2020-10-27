@@ -21,8 +21,8 @@ export default function ForgotPassword() {
                 para o e-mail cadastrado.</p>
                <form onSubmit={() => {}} className="login-form">
                     <fieldset>
+                        <label htmlFor="email">E-mail</label>
                         <div className="input-block">
-                            <label htmlFor="email">E-mail</label>
                             <input 
                                 type="email"
                                 id="" 

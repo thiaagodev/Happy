@@ -1,11 +1,11 @@
 import React from 'react';
 
-import '../../styles/pages/login.css';
+import '../../styles/pages/reset-password.css';
 import Logo from '../../images/Logotipo.svg'
 import { Link } from 'react-router-dom';
-import { FiArrowLeft } from 'react-icons/fi';
+import { FiArrowLeft, FiEye } from 'react-icons/fi';
 
-export default function Login() {
+export default function ResetPassword() {
     return (
         <div id="login-page">
             <div id="left-side">
@@ -16,10 +16,12 @@ export default function Login() {
                 </div>
             </div>
             <div id="login-area">
-               <h1>Fazer login</h1>
+               <h1>Redefinição de senha</h1>
+               <p>Escolha uma nova senha para você
+                acessar o dashboard do Happy</p>
                <form onSubmit={() => {}} className="login-form">
                     <fieldset>
-                        <label htmlFor="email">E-mail</label>
+                        <label htmlFor="email">Seu E-mail</label>
                         <div className="input-block">
                             <input 
                                 type="email"
@@ -28,28 +30,31 @@ export default function Login() {
                                 onChange={() => {}} 
                             />
                         </div>
-                        <label htmlFor="senha">Senha</label>
+                        <label htmlFor="password" className="label">Nova senha</label>
                         <div className="input-block">
-                            <input
-                                type="password" 
+                            <input 
+                                type="password"
+                                id="input" 
+                                /* value=""  */
+                                onChange={() => {}} 
+                            />    
+                        </div>
+                        <label htmlFor="password">Repetir senha</label>  
+                        <div className="input-block">
+                            <input 
+                                type="password"
                                 id="" 
-                               /*  value=""  */
+                                /* value=""  */
                                 onChange={() => {}} 
                             />
                         </div>
-                        <div className="input-block-bottom">
-                            <input type="checkbox" id="checkbox"/>
-                            <label htmlFor="checkbox">Lembrar-me</label>  
-
-                            <Link id="forgot" to="/forgot-password">Esqueci minha senha</Link>
-                        </div>
                     </fieldset>
                     <button type="button" className="login-button">
-                        Entrar
+                        Enviar
                     </button>
                </form>
 
-               <Link to="/" className="back">
+               <Link to="/login" className="back">
                     <FiArrowLeft size={26} color="#15C3D6" />
                </Link>
             </div>
