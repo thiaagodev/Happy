@@ -68,9 +68,7 @@ form.login-form {
     border-radius: 20px;
 
     margin-top: 40px;
-    padding: 64px 80px;
-
-    overflow: hidden;
+    padding: 20px 50px;
 }
 
 form.login-form fieldset {
