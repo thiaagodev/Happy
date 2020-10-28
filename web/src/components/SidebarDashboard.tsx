@@ -1,5 +1,5 @@
 import React from 'react';
-import { FiArrowLeft, FiMapPin, FiAlertCircle } from 'react-icons/fi'
+import { FiPower, FiMapPin, FiAlertCircle } from 'react-icons/fi'
 import { useHistory } from 'react-router-dom';
 import mapMarkerImg from '../images/map-marker.svg';
 
@@ -20,7 +20,7 @@ export default function Sidebar() {
             </main>
             <footer>
                 <button type="button" onClick={goBack}>
-                    <FiArrowLeft size={24} color="#FFF" />
+                    <FiPower size={24} color="#FFF" />
                 </button>
             </footer>
         </aside>
