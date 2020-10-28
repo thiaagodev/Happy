@@ -1,13 +1,13 @@
 import React from 'react';
 
-import '../../styles/pages/reset-password.css';
+import '../../styles/pages/RestricetdAcess/reset-password.css';
 import Logo from '../../images/Logotipo.svg'
 import { Link } from 'react-router-dom';
 import { FiArrowLeft, FiEye } from 'react-icons/fi';
 
 export default function ResetPassword() {
     return (
-        <div id="login-page">
+        <div id="reset-page">
             <div id="left-side">
                 <img src={Logo} alt="Happy"/>
                 <div className="location">
@@ -15,7 +15,7 @@ export default function ResetPassword() {
                     <span>São Paulo</span>
                 </div>
             </div>
-            <div id="login-area">
+            <div id="reset-area">
                <h1>Redefinição de senha</h1>
                <p>Escolha uma nova senha para você
                 acessar o dashboard do Happy</p>

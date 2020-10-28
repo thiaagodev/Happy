@@ -1,13 +1,13 @@
 import React from 'react';
 
-import '../../styles/pages/forgot-password.css';
+import '../../styles/pages/RestricetdAcess/forgot-password.css';
 import Logo from '../../images/Logotipo.svg'
 import { Link } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
 
 export default function ForgotPassword() {
     return (
-        <div id="login-page">
+        <div id="forgot-page">
             <div id="left-side">
                 <img src={Logo} alt="Happy"/>
                 <div className="location">
@@ -15,7 +15,7 @@ export default function ForgotPassword() {
                     <span>São Paulo</span>
                 </div>
             </div>
-            <div id="login-area">
+            <div id="forgot-area">
                <h1>Esqueci a senha</h1>
                <p>Sua redefinição de senha será enviada
                 para o e-mail cadastrado.</p>

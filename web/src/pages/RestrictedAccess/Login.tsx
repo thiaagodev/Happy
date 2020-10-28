@@ -1,6 +1,6 @@
 import React from 'react';
 
-import '../../styles/pages/login.css';
+import '../../styles/pages/RestricetdAcess/login.css';
 import Logo from '../../images/Logotipo.svg'
 import { Link } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
