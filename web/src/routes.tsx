@@ -9,6 +9,7 @@ import Login from './pages/RestrictedAccess/Login';
 import ForgotPassword from './pages/RestrictedAccess/ForgotPassword';
 import ResetPassword from './pages/RestrictedAccess/ResetPassword';
 import Dashboard from './pages/RestrictedAccess/Dashboard';
+import DashboardPending from './pages/RestrictedAccess/DashboardPending';
 
 function Routes() {
     return (
@@ -23,6 +24,7 @@ function Routes() {
                 <Route path="/forgot-password" component={ForgotPassword} />
                 <Route path="/reset-password" component={ResetPassword} />
                 <Route path="/dashboard" component={Dashboard} />
+                <Route path="/dashboard-pending" component={DashboardPending} />
             </Switch>         
         </BrowserRouter>
     );
