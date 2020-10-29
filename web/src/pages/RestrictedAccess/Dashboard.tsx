@@ -1,5 +1,6 @@
 import React from 'react';
 import { Map, Marker, TileLayer } from "react-leaflet";
+import { FiEdit3, FiTrash  } from 'react-icons/fi';
 
 import Sidebar from '../../components/SidebarDashboard';
 import '../../styles/pages/RestricetdAcess/dashboard.css';
@@ -35,12 +36,18 @@ export default function Dashboard() {
                         </Map>
 
                         <footer>
-                          <a  target="_blank" rel="noopener noreferrer" href={`https://www.google.com/maps/dir/?api=1&destination=${23.5887},${47.5658}`}>Ver rotas no Google Maps</a>
+                          <h2>Orfanato tal</h2>
+                          <div className="buttons">
+                            <button type="button" onClick={() => {}}>
+                              <FiEdit3 size={24} color="#15C3D6" />
+                            </button>
+                            <button type="button" onClick={() => {}}>
+                              <FiTrash size={24} color="#15C3D6" />
+                            </button>
+                          </div>
                         </footer>
-                    </div>
-                    
-                </div>
-                          
+                    </div>            
+                </div>                       
             </main>
         </div>
     );

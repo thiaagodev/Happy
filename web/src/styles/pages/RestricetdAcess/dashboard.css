@@ -25,7 +25,7 @@
 
 .dashboard-page main.container .map-container {
     margin-top: 64px;
-    background: #E6F7FB;
+    background: #fff;
     border: 1px solid #B3DAE2;
     border-radius: 20px;
 }
@@ -33,14 +33,36 @@
 .dashboard-page main.container .map-container footer {
     padding: 20px 0;
     text-align: center;
+    color: #4D6F80;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
 }
-  
-.dashboard-page main.container .map-container footer a {
-    line-height: 24px;
-    color: #0089A5;
-    text-decoration: none;
+
+.dashboard-page main.container .map-container footer .buttons {
+    display: flex;
 }
+
+.dashboard-page main.container .map-container footer .buttons button {
+    width: 48px;
+    height: 48px;
   
+    border: 0;
+  
+    background: #EBF2F5;
+    border-radius: 16px;
+  
+    cursor: pointer;
+  
+    transition: background-color 0.2s;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 8px;
+}
+
+
 .dashboard-page main.container .map-container .leaflet-container {
     border-bottom: 1px solid #DDE3F0;
     border-radius: 20px;
