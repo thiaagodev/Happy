@@ -10,6 +10,7 @@ import ForgotPassword from './pages/RestrictedAccess/ForgotPassword';
 import ResetPassword from './pages/RestrictedAccess/ResetPassword';
 import Dashboard from './pages/RestrictedAccess/Dashboard';
 import DashboardPending from './pages/RestrictedAccess/DashboardPending';
+import EditOrphanage from './pages/RestrictedAccess/EditOrphanage';
 
 function Routes() {
     return (
@@ -25,6 +26,7 @@ function Routes() {
                 <Route path="/reset-password" component={ResetPassword} />
                 <Route path="/dashboard" component={Dashboard} />
                 <Route path="/dashboard-pending" component={DashboardPending} />
+                <Route path="/edit-orphanage" component={EditOrphanage} />
             </Switch>         
         </BrowserRouter>
     );
