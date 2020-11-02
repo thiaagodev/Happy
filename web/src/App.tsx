@@ -4,10 +4,13 @@ import './styles/global.css';
 import 'leaflet/dist/leaflet.css';
 
 import Routes from './routes';
+import { AuthProvider } from './Context/AuthContext';
 
 function App() {
   return (
-    <Routes />
+    <AuthProvider>
+      <Routes />
+    </AuthProvider>   
   );
 }
 

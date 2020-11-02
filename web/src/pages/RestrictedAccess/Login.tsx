@@ -1,11 +1,23 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 
 import '../../styles/pages/RestricetdAcess/login.css';
 import Logo from '../../images/Logotipo.svg'
 import { Link } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
+import AuthContext from '../../Context/AuthContext';
 
 export default function Login() {
+    const { signed, signIn } = useContext(AuthContext);
+
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    console.log(signed);
+
+    function handleSignIn() {
+        signIn(email, password);
+    }
+
     return (
         <div id="login-page">
             <div id="left-side">
@@ -23,18 +35,16 @@ export default function Login() {
                         <div className="input-block">
                             <input 
                                 type="email"
-                                id="" 
-                                /* value=""  */
-                                onChange={() => {}} 
+                                value={email} 
+                                onChange={event => setEmail(event.target.value)} 
                             />
                         </div>
                         <label htmlFor="senha">Senha</label>
                         <div className="input-block">
                             <input
                                 type="password" 
-                                id="" 
-                               /*  value=""  */
-                                onChange={() => {}} 
+                                value={password}
+                                onChange={event => setPassword(event.target.value)} 
                             />
                         </div>
                         <div className="input-block-bottom">
@@ -44,7 +54,7 @@ export default function Login() {
                             <Link id="forgot" to="/forgot-password">Esqueci minha senha</Link>
                         </div>
                     </fieldset>
-                    <button type="button" className="login-button">
+                    <button type="button" className="login-button" onClick={handleSignIn}>
                         Entrar
                     </button>
                </form>

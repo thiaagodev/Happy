@@ -29,6 +29,10 @@ export default {
         }
 
         return res.json({
+            user: {
+                name: user.name,
+                email: user.email
+            },
             token: jwt.sign({ userId: user.id }, process.env.APP_SECRET, {
                 expiresIn: '1d'
             })
