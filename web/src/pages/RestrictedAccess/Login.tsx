@@ -1,21 +1,23 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 
 import '../../styles/pages/RestricetdAcess/login.css';
 import Logo from '../../images/Logotipo.svg'
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
-import AuthContext from '../../Context/AuthContext';
+import { useAuth } from '../../Context/AuthContext';
 
 export default function Login() {
-    const { signed, signIn } = useContext(AuthContext);
+    const history = useHistory();
+
+    const { signed, signIn } = useAuth();
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    console.log(signed);
 
     function handleSignIn() {
         signIn(email, password);
+        history.push('/');
     }
 
     return (
