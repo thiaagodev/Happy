@@ -50,9 +50,6 @@ export default function Login() {
                             />
                         </div>
                         <div className="input-block-bottom">
-                            <input type="checkbox" id="checkbox"/>
-                            <label htmlFor="checkbox">Lembrar-me</label>  
-
                             <Link id="forgot" to="/forgot-password">Esqueci minha senha</Link>
                         </div>
                     </fieldset>

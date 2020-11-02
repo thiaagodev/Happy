@@ -6,6 +6,7 @@ import Sidebar from '../../components/SidebarDashboardPending';
 import '../../styles/pages/RestricetdAcess/dashboard-pending.css';
 import mapIcon from "../../utils/mapIcon";
 import api from '../../services/api';
+import { Link } from 'react-router-dom';
 
 interface Orphanage {
   id: number
@@ -22,7 +23,7 @@ export default function DashboardPending() {
         setOrphanages(response.data);
       })
     }, [])
-    
+    console.log(orphanages)
     return(     
         <div className="dashboard-pending-page">
             <Sidebar/>
@@ -55,9 +56,11 @@ export default function DashboardPending() {
 
                         <footer>
                           <h2>{orphanage.name}</h2>
-                            <button type="button" onClick={() => {}}>
+                          <Link to={`/approve-orphanage/${orphanage.id}`}>
+                            <button type="button">
                               <FiArrowRight size={24} color="#15C3D6" />
                             </button>
+                          </Link>
                         </footer>
                       </div>  
                     );

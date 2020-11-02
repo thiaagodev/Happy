@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Marker, TileLayer, Map } from 'react-leaflet';
-import { FiPlus } from 'react-icons/fi';
+import { FiPlus, FiXCircle,  FiCheck, FiInfo} from 'react-icons/fi';
 import Sidebar from '../../components/Sidebar';
 import mapIcon from '../../utils/mapIcon';
 
-import '../../styles/pages/RestricetdAcess/edit-orphanage.css'
+import '../../styles/pages/RestricetdAcess/approve-orphanage.css'
+import { useHistory, useParams } from 'react-router-dom';
+import api from '../../services/api';
 
 interface Orphanage {
   latitude: number,
@@ -21,18 +23,47 @@ interface Orphanage {
   }>
 }
 
-export default function EditOrphanage() {
+interface OrphanageParams {
+    id: string;
+}
+
+export default function ApproveOrphanage() {
+    const history = useHistory();
+    const params = useParams<OrphanageParams>();
+    const [orphanage, setOrphanage] = useState<Orphanage>();
+
+    useEffect(() => {
+        api.get(`/pending-orphanages-details/${params.id}`).then(response => {
+          setOrphanage(response.data);
+        });
+    }, [params.id]);
+    
+    if (!orphanage) {
+        return <p>Carregando...</p>
+    }
+
+    async function handleRecuseOrphanage() {
+        await api.delete(`/remove/orphanage/${params.id}`);
+        
+        history.push('/pending');
+    }   
+    
+    async function handleApproveOrphanage() {
+        await api.put(`/approve/orphanage/${params.id}`);
+        history.push('/');
+    }   
+
     return (
-        <div id="page-edit-orphanage"> 
+        <div id="page-approve-orphanage"> 
             <Sidebar />
 
         <main>
-            <form onSubmit={() => {}} className="edit-orphanage-form">
+            <form onSubmit={() => {}} className="aprove-orphanage-form">
                 <fieldset>
                     <legend>Dados</legend>
 
                     <Map 
-                      center={[-23.1001758, -47.7136837]} 
+                      center={[orphanage.latitude, orphanage.longitude]} 
                       style={{ width: '100%', height: 280 }}
                       zoom={15}
                       onClick={() => {}}
@@ -41,10 +72,10 @@ export default function EditOrphanage() {
                         url={`https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`}
                       />
                       
-                      { 0 !== 0 && (
+                      { orphanage.latitude !== 0 && (
                         <Marker interactive={false} 
                                 icon={mapIcon} 
-                                position={[-23.1001758, -47.7136837]} 
+                                position={[orphanage.latitude, orphanage.longitude]} 
                         />)  
                       }
         
@@ -54,7 +85,7 @@ export default function EditOrphanage() {
                       <label htmlFor="name">Nome</label>
                       <input 
                         id="name" 
-                        value={''} 
+                        value={orphanage.name} 
                         onChange={() => {}} 
                       />
                     </div>
@@ -63,7 +94,7 @@ export default function EditOrphanage() {
                       <label htmlFor="about">Sobre <span>Máximo de 300 caracteres</span></label>
                       <textarea 
                         id="name" 
-                        value={''} 
+                        value={orphanage.about} 
                         onChange={() => {}}
                         maxLength={300} 
                       />
@@ -73,7 +104,7 @@ export default function EditOrphanage() {
                       <label htmlFor="name">Número de Whatsapp</label>
                       <input 
                         id="name" 
-                        value={''} 
+                        value={orphanage.whatsapp_number} 
                         onChange={() => {}} 
                       />
                     </div>
@@ -82,14 +113,11 @@ export default function EditOrphanage() {
                       <label htmlFor="images">Fotos</label>
 
                       <div className="images-container">
-                        {/* {previewImages.map(image => {
+                        {orphanage.images.map(image => {
                             return (
-                              <img key={image} src={image} alt={name}/>
+                              <img key={image.id} src={image.url} alt={image.url}/>
                             );
-                        })} */}
-                        <label htmlFor="image[]" className="new-image">
-                          <FiPlus size={24} color="#15b6d6" />
-                        </label>
+                        })}
                       </div>
                     
                       <input multiple onChange={() => {}} type="file" id="image[]"/>
@@ -103,7 +131,7 @@ export default function EditOrphanage() {
                       <label htmlFor="instructions">Instruções</label>
                       <textarea 
                         id="instructions" 
-                        value={''} 
+                        value={orphanage.instructions} 
                         onChange={() => {}}
                       />
                     </div>
@@ -112,37 +140,42 @@ export default function EditOrphanage() {
                       <label htmlFor="opening_hours">Horário de funcionamento</label>
                       <input 
                         id="opening_hours" 
-                        value={''} 
+                        value={orphanage.opening_hours} 
                         onChange={() => {}}  
                       />
                     </div>
 
                     <div className="input-block">
-                      <label htmlFor="open_on_weekends">Atende fim de semana</label>
-
-                      <div className="button-select">
-                        <button 
-                          type="button" 
-                          className={'a'/* open_on_weekends ? 'active': '' */}
-                          onClick={() => {}}
-                        >
-                          Sim
-                        </button>
-
-                        <button 
-                          type="button"
-                          className={'a'/* !open_on_weekends ? 'active': '' */}
-                          onClick={() => {}}
-                        >
-                          Não
-                        </button>
-                      </div>
+                      <label htmlFor="open_on_weekends">Atende fim de semana</label>                  
+                        <div className="open-details">
+                                {orphanage.open_on_weekends ? (
+                                    <div className="open-on-weekends">
+                                    <FiInfo size={32} color="#39CC83" />
+                                        Atendemos <br />
+                                    f   im de semana
+                                    </div>
+                                ) : (
+                                    <div className="open-on-weekends dont-open">
+                                        <FiInfo size={32} color="#FF669D" />
+                                            Não atendemos <br />
+                                            fim de semana
+                                    </div>
+                                )}                         
+                        </div>
                     </div>
                 </fieldset>
+                
+                <div className="approved-or-not">
+                    <button type="button" className="recuse-button" onClick={handleRecuseOrphanage}>
+                        <FiXCircle />
+                        Recusar
+                    </button>
+                    <button type="button" className="approve-button" onClick={handleApproveOrphanage}>
+                        <FiCheck />
+                        Aceitar
+                    </button>
+                </div>
 
-                <button className="confirm-edit-button" type="submit">
-                    Confirmar
-                </button>
             </form>
         </main>
         </div>
