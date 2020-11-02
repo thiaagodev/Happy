@@ -60,7 +60,15 @@ export default {
             relations: ['images']
         });
 
-        return res.json(pendingOrphanagesView.renderMany(orphanages));
+        const notApprovedOrphanages: any = []; 
+
+        orphanages.map(orphanage => {
+            if(orphanage.is_approved === false) {
+                notApprovedOrphanages.push(orphanage)
+            };
+        })
+
+        return res.json(pendingOrphanagesView.renderMany(notApprovedOrphanages));
     },
 
     async showOrphanageDetails(req: Request, res: Response) {
