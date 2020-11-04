@@ -31,4 +31,13 @@ Nos links abaixo você encontra o layout do projeto web e também do mobile. Lem
 
 <br/>
 
+## Como executar o projeto web
+
+Certifique-se que você tem o Node e o npm instalados na sua máquina.
+Entre nas pastas do projeto e rode o comando "npm install" tanto na pasta "backend" quanto na pasta "web" para instalar as dependências.
+Após isso, para rodar o servidor use o comando "npm run dev" ou "yarn dev" na pasta backend.
+Para rodar o front-end web use o comando "npm run start" ou "yarn start".
+
+<br/>
+
 Feito com :hearts: by Rocketseat :wave: [Acesse o repositório oficial](https://github.com/rocketseat-education/nlw-03-omnistack)
