@@ -6,6 +6,7 @@ import Sidebar from '../../components/SidebarDashboard';
 import '../../styles/pages/RestricetdAcess/dashboard.css';
 import mapIcon from "../../utils/mapIcon";
 import api from '../../services/api';
+import { Link, useHistory } from 'react-router-dom';
 
 interface Orphanage {
   id: number
@@ -17,12 +18,18 @@ interface Orphanage {
 
 export default function Dashboard() {
     const [orphanages, setOrphanages] = useState<Orphanage[]>([]);
+    const history = useHistory();
 
     useEffect(() => {
       api.get('/orphanages').then(response => {
         setOrphanages(response.data);
       })
     }, [])
+
+    async function handleDeleteOrphanage(id: number) {
+      await api.delete(`/remove/orphanage/${id}`);
+      window.location.reload();
+    }
 
     return(     
         <div className="dashboard-page">
@@ -57,10 +64,7 @@ export default function Dashboard() {
                         <footer>
                           <h2>{orphanage.name}</h2>
                           <div className="buttons">
-                            <button type="button" onClick={() => {}}>
-                              <FiEdit3 size={24} color="#15C3D6" />
-                            </button>
-                            <button type="button" onClick={() => {}}>
+                            <button type="button" onClick={() => handleDeleteOrphanage(orphanage.id)}>
                               <FiTrash size={24} color="#15C3D6" />
                             </button>
                           </div>

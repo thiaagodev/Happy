@@ -49,10 +49,10 @@ export default function Orphanage() {
 
       <main>
         <div className="orphanage-details">
-          <img src={orphanage.images[activeImageIndex].url} alt={orphanage.name} />
+          <img src={orphanage.images !== undefined ? orphanage.images[activeImageIndex]?.url: ''} alt={orphanage.name} />
 
           <div className="images">
-            {orphanage.images.map((image, index) => {
+            {orphanage.images !== undefined && orphanage.images.map((image, index) => {
               return (
                 <button key={image.id} 
                 className={activeImageIndex === index ? 'active': ''} 
